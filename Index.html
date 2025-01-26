@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: #000b53;
+      color: white;
+      display: grid;
+      place-items: center;
+
+    }
+    #password {
+      font-size: 1.2em;
+      margin: 10px 0;
+      word-wrap: break-word;
+    }
+
+    input{
+        display: inline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Taiwo Password Generator</h1>
+
+  <h1>Enter You Desired Password Length</h1>
+  <label for="length">Password Length:</label>
+  <input type="number" id="length" min="4" max="64" value="12">
+  <button onclick="generatePassword()">Generate Password</button>
+  <p id="password"></p>
+  <script>
+    function generatePassword() {
+      const length = document.getElementById('length').value;
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+      let password = '';
+      
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        password += characters[randomIndex];
+      }
+      
+      document.getElementById('password').textContent = `Your Password is -- ${password}`;
+    }
+  </script>
+</body>
+</html>
